@@ -1,0 +1,13 @@
+body {
+    background-color: #EEE;
+}
+
+.container {
+    width: 30%;
+    margin-top: 100px;
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 20px;
+}

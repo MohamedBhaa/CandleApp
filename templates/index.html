@@ -1,0 +1,18 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <p>Welcome to administration system of candle application</p>
+    <div class="container">
+        <a href="{{ url_for('login') }}">Get Started</a>
+    </div>
+{% endblock %}
