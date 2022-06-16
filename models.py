@@ -35,5 +35,6 @@ class Book(db.Model):
     title = db.Column(db.String(100), nullable=False)
     author = db.Column(db.String(50), nullable=False)
     cover = db.Column(db.String(200), default='https://islandpress.org/sites/default/files/default_book_cover_2015.jpg')
+    rating = db.Column(db.String(5))
     content = db.Column(db.LargeBinary)
     date_added = db.Column(db.DateTime, default=datetime.now)
