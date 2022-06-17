@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}CandleApp | Requests{% endblock %}  
+
+{% block custom_css %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='requests.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <nav>
+        <a href="{{ url_for('books') }}">Books</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+
+    <form method="POST" action="{{ url_for('add_request') }}">  
+        <h1 class= "page-head">Requests</h1>
+        <input name="books" type="text" placeholder="Books Requested">
+        <input name="user" type="text" placeholder="User ID">
+        <input type="submit" value="ADD">
+        <a href="{{ url_for('requests') }}">Show All</a>
+    </form>
+
+{% endblock %}  

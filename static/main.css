@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    padding :0;
+    margin:0;
+    font-family: sans-serif;
+}
+
+body {
+    background: url(imgs/h.jpg);
+    background-size: cover;
+}
+
+.page-head, .page-description {
+    text-align: center;
+}
+
+.page-head {
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+}
+
+nav {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.5);
+    text-decoration: none;
+    font-size: 20px;
+    padding-right: 50px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+nav a:hover {
+    color: black;
+}

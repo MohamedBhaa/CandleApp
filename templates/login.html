@@ -1,30 +1,19 @@
-{% extends "bootstrap/base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}
-    Log In | CandleApp
+{% block title %}CandleApp | Login{% endblock %} 
+
+{% block custom_css %} 
+  <link rel="stylesheet" href="{{ url_for('static', filename='logins.css') }}"/>
 {% endblock %}
 
-{% block styles %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-{% endblock %}
+{% block body %}
 
-{% block content %}
-    <div class="container">
-        <form class="form-horizontal" method="POST" action="/login">
-            <h3 class="col-sm-10">Log In</h3>
+    <form method="GET" action="{{ url_for('books') }}">
+      <h1 class= "page-head">Login</h1>
+      <input name="username" type="text" placeholder="Username">
+      <input name="password" type="password" placeholder="Password">
+      <p>forget password?</p>
+      <input type="submit" value="Login">
+    </form>
 
-            <div class="col-sm-10">
-                <input required type="text" class="form-control" name="username" placeholder="Username">
-            </div>
-
-            <div class="col-sm-10">
-                <input required type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Log in</button>
-            </div>
-        </form>
-    </div>
 {% endblock %}

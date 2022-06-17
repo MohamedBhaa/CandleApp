@@ -268,6 +268,89 @@ def voice_search():
     
     return jsonify({'Books': books})
 
+    # Zeina's Routes
+    @app.route('/')
+    def login():
+        return render_template('login.html')
+
+
+@app.route('/books/', methods=['GET', 'POST'])
+def books():
+    page = request.args.get('page', 1, type=int)
+    books = Book.query.paginate(per_page=3, page=page, error_out=False)
+    if request.method == 'POST':
+        title = request.form['title']
+        cover = request.form['cover']
+        author = request.form['author']
+
+        if cover == '':
+            book = Book(title=title, author=author)
+        else:
+            book = Book(title=title, author=author, cover=cover)
+
+        db.session.add(book)
+        db.session.commit()
+        
+    return render_template('books.html', books=books)
+
+
+@app.route('/books/<int:book_id>/', methods=['GET', 'POST'])
+def update(book_id):
+    page = request.args.get('page', 1, type=int)
+    books = Book.query.paginate(per_page=3, page=page, error_out=False)
+    meta = Book.query.filter_by(id=book_id)
+    if request.method == 'POST':
+        title = request.form['title']
+        cover = request.form['cover']
+        author = request.form['author']
+        meta.update({'title': title, 'cover': cover, 'author': author})
+        db.session.commit()
+        return redirect(url_for('books'))
+    
+    return render_template('update.html', books=books, meta=meta.first())
+
+
+@app.route('/delete/<int:book_id>/')
+def delete(book_id):
+    Book.query.filter_by(id=book_id).delete()
+    db.session.commit()
+    return redirect(url_for('books'))
+
+@app.route('/requests/')
+def requests():
+    all_requests = Request.query.filter_by(status='Waiting').all()
+    return render_template('requests.html', requests=all_requests)
+
+
+@app.route('/requests/add/', methods=['GET', 'POST'])
+def add_request():
+    if request.method == 'POST':
+        books = request.form['books']
+        user = request.form['user']
+        req = Request(books_requested=books, user_id=user)
+        db.session.add(req)
+        db.session.commit()
+
+    return render_template('add_request.html')
+
+@app.route('/requests/<int:req_id>')
+def change_status(req_id):
+    req = Request.query.filter_by(id=req_id).update({'status': 'Done!'})
+    db.session.commit()
+    return redirect(url_for('requests'))
+
+
+@app.route('/logout/')
+def logout():
+    return redirect(url_for('login'))
+
+@app.route('/upload/<int:book_id>', methods=['POST'])
+def upload(book_id):
+    content = request.files['file']
+    book = Book.query.filter_by(id=book_id).update({'content': content.read()})
+    db.session.commit()
+    return redirect(url_for('books'))
+
 
 if __name__ == '__main__':
     app.run()

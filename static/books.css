@@ -1,0 +1,142 @@
+.content {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 43px);
+}
+
+.main-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:800px;
+    height:600px;
+    background:rgb(0, 0, 0, 0.5);
+    border-radius: 15px;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+input[type='text'] {
+    outline: none;
+    border: none;
+    width: 40%;
+    height: 35px;
+    margin-top: 30px;
+    border-bottom: 2px solid rgb(147, 191, 218);
+    background: none;
+    color: white;
+}
+
+::placeholder{
+    color: white;
+}
+
+.submit {
+    width: 130px;
+    height: 35px;
+    margin-top: 50px;
+    background: rgb(147, 191, 218);
+    border: none;
+    outline: none;
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+    border-radius: 15px;
+    font-size :20px;
+}
+            
+.submit:hover {
+    background: #fff;
+    color:black ;
+}
+
+.upload {
+    margin-top: 40px;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20%;
+}
+
+/* .file-upload {
+    width: 250px;
+    color: #fff;
+    background-color: rgb(147, 191, 218);
+    cursor: pointer;
+    padding: 7px;
+}
+
+.file-upload:hover {
+    background-color: #fff;
+    color: black;
+} */
+
+input[type="file"] {
+    color: white;
+}
+
+button {
+    border: none;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 5px;
+    width: 100px;
+    color: #fff;
+    background-color:rgb(147, 191, 218);
+}
+
+button:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.book {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    /* width: 150px; */
+}
+
+.book p {
+    font-size: 12px;
+    line-height: 0px;
+}
+
+.book .title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.book img {
+    border-radius: 10px;
+    width: 100px;
+    max-height: 100px;
+}
+
+.nav {
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px 10px;
+    background-color:rgb(147, 191, 218);
+    color: black;
+    font-size: 20px;
+    margin: 32px;
+    cursor: pointer;
+}
+
+.nav:hover{
+    background-color:white;
+}

@@ -1,0 +1,55 @@
+form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 420px;
+    background: rgb(0,0,0,0.5);
+    border-radius: 15px;
+    text-align: center;
+}
+
+input[type='text'], [type='password'] {
+    outline: none;
+    border: none;
+    width: 250px;
+    height: 35px;
+    margin-top: 30px;
+    border-bottom: 2px solid rgb(147, 191, 218);
+    background: none;
+    color: white;
+}
+
+::placeholder{
+    color: white;
+}
+
+input[value="Login"] {
+    margin-top: 60px;
+    width: 130px;
+    height: 35px;
+    background: rgb(147, 191, 218);
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+input[value="Login"]:hover {
+    background: #fff;
+    color: black;
+}
+
+p {
+    color:white; 
+    cursor: pointer;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+p:hover {
+    color:black;
+}

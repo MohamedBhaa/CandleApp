@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}CandleApp | Books{% endblock %}
+
+{% block custom_css %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='books.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <nav>
+        <a href="{{ url_for('requests') }}">Requests</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <div class="content">
+        <div class="main-form">
+            <form method="POST" action="{{ url_for('update', book_id=meta.id) }}">
+                <h1 class= "page-head">Books</h1>
+                <input name="title" type="text" placeholder="Book Title" value="{{ meta.title }}">
+                <input name="author" type="text" placeholder="Author" value="{{ meta.author }}">
+                <input name="cover" type="text" placeholder="Cover URL" value="{{ meta.cover }}">
+                
+                <div class="buttons">
+                    <input class="submit" type="submit" value="ADD">
+                    <input class="submit" type="submit" value="Edit">
+                    <a class="submit" href="{{ url_for('delete', book_id=meta.id) }}">Delete</a>
+                </div>
+            </form>
+        
+            <form class="upload" method="POST" action="{{ url_for('upload', book_id=meta.id) }}" enctype="multipart/form-data">
+                <!-- <label class="file-upload">
+                    <input type="file"/>Select File
+                </label> -->
+                <input name="file" type="file">
+                <button>Upload</button>
+            </form>
+
+            <div class="container">
+                <a class="nav" href="{{ url_for('books', page=books.page-1) }}">&laquo;</a>
+
+                {% for book in books.items %}
+                    <a class="book" href="{{ url_for('update', book_id=book.id) }}">
+                        <p class="title">{{book.title}}</p><br>
+                        <p>by {{book.author}}</p><br>
+                        <img src ="{{ book.cover }}" alt=""><br>
+                        <br/>
+                    </a>
+                {% endfor %}
+
+                <a class="nav" href="{{ url_for('books', page=books.page+1) }}">&raquo;</a>   
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
