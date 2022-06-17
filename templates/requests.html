@@ -9,17 +9,17 @@
 {% block body %}
 
     <nav>
-        <a href="{{ url_for('books') }}">Books</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('ui_books') }}">Books</a>
+        <a href="{{ url_for('ui_logout') }}">Logout</a>
     </nav>
 
 
-    <form action="{{ url_for('add_request') }}">  
+    <form action="{{ url_for('ui_add_request') }}">  
         {% for request in requests %}
             <div class="request">
                 <p class="title">{{request.books_requested}}</p><br>
                 <p>by ID: {{request.user_id}}</p><br>
-                <a href="{{ url_for('change_status', req_id=request.id) }}">Completed</a><br>
+                <a href="{{ url_for('ui_change_status', req_id=request.id) }}">Completed</a><br>
                 <hr>
             </div>
         {% endfor %}

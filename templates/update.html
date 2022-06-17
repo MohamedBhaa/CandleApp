@@ -9,13 +9,13 @@
 {% block body %}
 
     <nav>
-        <a href="{{ url_for('requests') }}">Requests</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('ui_requests') }}">Requests</a>
+        <a href="{{ url_for('ui_logout') }}">Logout</a>
     </nav>
 
     <div class="content">
         <div class="main-form">
-            <form method="POST" action="{{ url_for('update', book_id=meta.id) }}">
+            <form method="POST" action="{{ url_for('ui_update', book_id=meta.id) }}">
                 <h1 class= "page-head">Books</h1>
                 <input name="title" type="text" placeholder="Book Title" value="{{ meta.title }}">
                 <input name="author" type="text" placeholder="Author" value="{{ meta.author }}">
@@ -24,11 +24,11 @@
                 <div class="buttons">
                     <input class="submit" type="submit" value="ADD">
                     <input class="submit" type="submit" value="Edit">
-                    <a class="submit" href="{{ url_for('delete', book_id=meta.id) }}">Delete</a>
+                    <a class="submit" href="{{ url_for('ui_delete', book_id=meta.id) }}">Delete</a>
                 </div>
             </form>
         
-            <form class="upload" method="POST" action="{{ url_for('upload', book_id=meta.id) }}" enctype="multipart/form-data">
+            <form class="upload" method="POST" action="{{ url_for('ui_upload', book_id=meta.id) }}" enctype="multipart/form-data">
                 <!-- <label class="file-upload">
                     <input type="file"/>Select File
                 </label> -->
@@ -37,10 +37,10 @@
             </form>
 
             <div class="container">
-                <a class="nav" href="{{ url_for('books', page=books.page-1) }}">&laquo;</a>
+                <a class="nav" href="{{ url_for('ui_books', page=books.page-1) }}">&laquo;</a>
 
                 {% for book in books.items %}
-                    <a class="book" href="{{ url_for('update', book_id=book.id) }}">
+                    <a class="book" href="{{ url_for('ui_update', book_id=book.id) }}">
                         <p class="title">{{book.title}}</p><br>
                         <p>by {{book.author}}</p><br>
                         <img src ="{{ book.cover }}" alt=""><br>
@@ -48,7 +48,7 @@
                     </a>
                 {% endfor %}
 
-                <a class="nav" href="{{ url_for('books', page=books.page+1) }}">&raquo;</a>   
+                <a class="nav" href="{{ url_for('ui_books', page=books.page+1) }}">&raquo;</a>   
             </div>
         </div>
     </div>

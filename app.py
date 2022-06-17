@@ -268,12 +268,12 @@ def voice_search():
 
 # Zeina's Routes
 @app.route('/')
-def login():
+def ui_login():
     return render_template('login.html')
 
 
 @app.route('/books/', methods=['GET', 'POST'])
-def books():
+def ui_books():
     page = request.args.get('page', 1, type=int)
     books = Book.query.paginate(per_page=3, page=page, error_out=False)
     if request.method == 'POST':
@@ -293,7 +293,7 @@ def books():
 
 
 @app.route('/books/<int:book_id>/', methods=['GET', 'POST'])
-def update(book_id):
+def ui_update(book_id):
     page = request.args.get('page', 1, type=int)
     books = Book.query.paginate(per_page=3, page=page, error_out=False)
     meta = Book.query.filter_by(id=book_id)
@@ -303,25 +303,25 @@ def update(book_id):
         author = request.form['author']
         meta.update({'title': title, 'cover': cover, 'author': author})
         db.session.commit()
-        return redirect(url_for('books'))
+        return redirect(url_for('ui_books'))
     
     return render_template('update.html', books=books, meta=meta.first())
 
 
 @app.route('/delete/<int:book_id>/')
-def delete(book_id):
+def ui_delete(book_id):
     Book.query.filter_by(id=book_id).delete()
     db.session.commit()
-    return redirect(url_for('books'))
+    return redirect(url_for('ui_books'))
 
 @app.route('/requests/')
-def requests():
+def ui_requests():
     all_requests = Request.query.filter_by(status='Waiting').all()
     return render_template('requests.html', requests=all_requests)
 
 
 @app.route('/requests/add/', methods=['GET', 'POST'])
-def add_request():
+def ui_add_request():
     if request.method == 'POST':
         books = request.form['books']
         user = request.form['user']
@@ -332,22 +332,22 @@ def add_request():
     return render_template('add_request.html')
 
 @app.route('/requests/<int:req_id>')
-def change_status(req_id):
+def ui_change_status(req_id):
     req = Request.query.filter_by(id=req_id).update({'status': 'Done!'})
     db.session.commit()
-    return redirect(url_for('requests'))
+    return redirect(url_for('ui_requests'))
 
 
 @app.route('/logout/')
-def logout():
-    return redirect(url_for('login'))
+def ui_logout():
+    return redirect(url_for('ui_login'))
 
 @app.route('/upload/<int:book_id>', methods=['POST'])
-def upload(book_id):
+def ui_upload(book_id):
     content = request.files['file']
     book = Book.query.filter_by(id=book_id).update({'content': content.read()})
     db.session.commit()
-    return redirect(url_for('books'))
+    return redirect(url_for('ui_books'))
 
 
 if __name__ == '__main__':
