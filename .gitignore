@@ -1,4 +1,5 @@
 __pycache__/
 candle_venv/
-candle.db
 msearch/
+candle.db
+config.py
