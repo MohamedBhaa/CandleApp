@@ -268,10 +268,10 @@ def voice_search():
     
     return jsonify({'Books': books})
 
-    # Zeina's Routes
-    @app.route('/')
-    def login():
-        return render_template('login.html')
+# Zeina's Routes
+@app.route('/')
+def login():
+    return render_template('login.html')
 
 
 @app.route('/books/', methods=['GET', 'POST'])
