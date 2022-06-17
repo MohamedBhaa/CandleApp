@@ -29,9 +29,8 @@ def books():
         book_title = request.json['title']
         book_author = request.json['author']
         book_cover = request.json['cover']
-        rating = request.json['rating']
 
-        book = Book(title=book_title, author=book_author, cover=book_cover, rating=rating)
+        book = Book(title=book_title, author=book_author, cover=book_cover)
         db.session.add(book)
         db.session.commit()
         return jsonify({'message': 'Book Added Successfully!', 'status': 201})
@@ -41,7 +40,7 @@ def books():
 
         books = []
         for book in books_obj:
-            book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author, 'rating': book.rating, 'date_added': book.date_added}
+            book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author, 'date_added': book.date_added}
             books.append(book_dict)
         
         return jsonify({'Books': books})
@@ -53,7 +52,7 @@ def book(book_id):
 
     if request.method == 'GET':
         book = book.first()
-        book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author, 'rating': book.rating, 'date_added': book.date_added}
+        book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author, 'date_added': book.date_added}
         return jsonify(book_dict)
 
     elif request.method == 'PUT':
@@ -61,9 +60,8 @@ def book(book_id):
         book_title = request.json['title']
         book_author = request.json['author']
         book_cover = request.json['cover']
-        book_rating = request.json['rating']
 
-        book_dict = {'title': book_title, 'author': book_author, 'cover': book_cover, 'rating': book_rating}
+        book_dict = {'title': book_title, 'author': book_author, 'cover': book_cover}
         book.update(book_dict)
         db.session.commit()
         return jsonify({'message': 'Book Metadata Updated Successfully!', 'status': 200})
@@ -109,7 +107,7 @@ def book_search(query):
 
     books = []
     for result in results:
-        book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author, 'rating': book.rating, 'date_added': book.date_added}
+        book_dict = {'id': result.id, 'title': result.title, 'cover': result.cover, 'author': result.author}
         books.append(book_dict)
     
     return jsonify({'Books': books})
@@ -263,7 +261,7 @@ def voice_search():
 
     books = []
     for result in results:
-        book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author, 'rating': book.rating, 'date_added': book.date_added}
+        book_dict = {'id': result.id, 'title': result.title, 'cover': result.cover, 'author': result.author}
         books.append(book_dict)
     
     return jsonify({'Books': books})
