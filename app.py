@@ -303,7 +303,9 @@ def ui_update(book_id):
         title = request.form['title']
         cover = request.form['cover']
         author = request.form['author']
-        meta.update({'title': title, 'cover': cover, 'author': author})
+        rating = request.form['rating']
+
+        meta.update({'title': title, 'cover': cover, 'author': author, 'rating': rating})
         db.session.commit()
         return redirect(url_for('ui_books'))
     
