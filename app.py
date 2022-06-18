@@ -250,7 +250,7 @@ def requesting(req_id):
         return jsonify({'message': 'Request Deleted Successfully!', 'status': 200})
 
 
-@app.route('/api/transcriptions/', methods=['POST'])
+@app.route('/api/transcription/', methods=['POST'])
 def voice_search():
     # Extract Data From File
     audio = request.files['audio']
