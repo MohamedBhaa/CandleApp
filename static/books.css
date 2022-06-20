@@ -101,18 +101,21 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    height: 178px;
 }
 
 .book {
     color: white;
     display: inline-block;
     text-decoration: none;
-    /* width: 150px; */
+    width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .book p {
     font-size: 12px;
-    line-height: 0px;
+    line-height: 10px;
 }
 
 .book .title {
@@ -134,6 +137,7 @@ button:hover {
     color: black;
     font-size: 20px;
     margin: 32px;
+    margin-bottom: 50px;
     cursor: pointer;
 }
 
