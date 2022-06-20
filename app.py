@@ -119,6 +119,8 @@ def book_search(query):
 @app.route('/api/users/', methods=['GET', 'POST'])
 def users():
     if request.method == 'POST':
+        print(request.json)
+
         # Extract Data From JSON
         username = request.json['username']
         email = request.json['email']
