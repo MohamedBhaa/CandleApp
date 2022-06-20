@@ -2,6 +2,5 @@ espeak
 libespeak1
 ffmpeg
 libslang2
-pyaudio
 libpulse0
 pulseaudio
