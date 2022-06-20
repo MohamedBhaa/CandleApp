@@ -186,7 +186,7 @@ def edit_picture(user_name):
         return send_file(BytesIO(user.picture), attachment_filename=picture_name, as_attachment=True)
 
 
-@app.route('/api/users/validate/', methods=['POST'])
+@app.route('/api/validate/', methods=['POST'])
 def check_user():
     # Extract Data From JSON
     email = request.json['email']
