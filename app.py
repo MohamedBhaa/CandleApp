@@ -189,10 +189,10 @@ def edit_picture(user_name):
 @app.route('/api/users/validate/', methods=['POST'])
 def check_user():
     # Extract Data From JSON
-    username = request.json['username']
+    email = request.json['email']
     password = request.json['password']
     
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
     if user:
         if check_password_hash(user.password, password):
             return jsonify({'user_valid': True, 'username': user.username, 'email': user.email})
