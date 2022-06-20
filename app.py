@@ -346,6 +346,7 @@ def ui_change_status(req_id):
 def ui_logout():
     return redirect(url_for('ui_login'))
 
+
 @app.route('/upload/<int:book_id>', methods=['POST'])
 def ui_upload(book_id):
     content = request.files['file']
