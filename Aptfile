@@ -1,4 +1,4 @@
 espeak
 ffmpeg
 libespeak1
-libpulsecommon
+libpulse0
