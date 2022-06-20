@@ -13,7 +13,7 @@ def convert(file_path):
     print(content)
     
     audio_name = 'audio.mp3'
-    engine = pyttsx3.init('espeak')
+    engine = pyttsx3.init()
     engine.setProperty('rate', 150)
     engine.say(content)
 
