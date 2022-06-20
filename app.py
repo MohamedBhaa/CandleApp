@@ -31,7 +31,7 @@ def books():
         book_cover = request.json['cover']
         book_rating = request.json['rating']
 
-        book = Book(title=book_title, author=book_author, cover=book_cover, rating=rating)
+        book = Book(title=book_title, author=book_author, cover=book_cover, rating=book_rating)
         db.session.add(book)
         db.session.commit()
         return jsonify({'message': 'Book Added Successfully!', 'status': 201})
