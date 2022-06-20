@@ -191,6 +191,8 @@ def check_user():
     # Extract Data From JSON
     email = request.json['email']
     password = request.json['password']
+    print(email)
+    print(password)
     
     user = User.query.filter_by(email=email).first()
     if user:
