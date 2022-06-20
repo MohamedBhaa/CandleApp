@@ -5,7 +5,6 @@ portaudio19-dev
 libportaudio2
 libportaudiocpp0
 ffmpeg
-libav-tools
 libslang2
 libpulse0
 pulseaudio
