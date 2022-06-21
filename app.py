@@ -137,7 +137,7 @@ def users():
 
         users = []
         for user in users_obj:
-            user_dict = {'username': user.username, 'email': user.email, 'password': user.password,
+            user_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
                 'date_joined': user.date_joined, 'phone': user.phone}
             users.append(user_dict)
 
@@ -150,7 +150,8 @@ def user(user_id):
 
     if request.method == 'GET':
         user = user.first()
-        user_dict = {'username': user.username, 'email': user.email, 'password': user.password, 'phone': user.phone}
+        user_dict = user_dict = {'id': user.id, 'username': user.username, 'email': user.email,
+            'password': user.password, 'phone': user.phone}
         return jsonify(user_dict)
 
     elif request.method == 'PUT':
