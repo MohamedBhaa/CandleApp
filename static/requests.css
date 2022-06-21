@@ -3,28 +3,30 @@ form {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 350px;
-    height: 420px;
+    width: 500px;
+    height: 450px;
     background:rgb(0,0,0,0.5);
     border-radius: 15px;
     box-sizing: border-box;
     text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-input[type='text'],[type='text'] {
-    position: relative;
+input[name='books'] {
+    margin-top: 50px;
+}
+
+input[type='text'] {
     outline: none;
     border: none;
-    width: 250px;
+    width: 300px;
     height: 60px;
     border-bottom: 2px solid rgb(147, 191, 218);
     background: none;
     color: white;
-    padding: none;
-}
-
-input[type='text'] {
-    top: 30px;
+    display: block;
+    margin-left: 70px;
 }
 
 ::placeholder {
@@ -32,21 +34,106 @@ input[type='text'] {
 }
 
 input[value="ADD"] {
-    position:absolute;
-    top: 305px;
-    left: 110px;
+    display: inline-block;
     width: 130px;
-    height: 35px;
+    padding: 6px;
+    margin-top: 60px;
+    margin-right: 20px;
     background: rgb(147, 191, 218);
     border:none;
     outline:none;
     color:#fff;
     border-radius:15px;
     font-size:20px;
-    font-family: sans-serif;
 }
 
-input[value="ADD"]:hover {
+input[value="ADD"]:hover, .link:hover {
     background: #fff;
-    color: black ;
+    color: black;
+}
+
+.link {
+    display: inline-block;
+    width: 130px;
+    padding: 6px;
+    margin-top: 10px;
+    background: rgb(147, 191, 218);
+    text-decoration: none;
+    color:#fff;
+    border-radius:15px;
+    font-size:20px;
+}
+
+p {  
+    display: inline-block;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.request p:last-of-type {
+    width: 50%;
+    text-align: left;
+}
+
+
+input[value="ADD NEW REQUEST"] {
+    position:absolute;
+    bottom: 30px;
+    left: 110px;
+    width: 150px;
+    height: 35px;
+    background: rgb(147, 191, 218);
+    border:none;
+    margin-left:65px ;
+    color:white;
+    border-radius:15px;
+    font-size:12px;
+}
+
+input[value="ADD NEW REQUEST"]:hover {
+    color: black;
+    background-color: white;
+}
+
+.complete {
+    display: inline-block;
+    color: black;
+    background-color: rgb(147, 191, 218);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+hr:last-of-type {
+    display: none;
+}
+
+.nav {
+    position: absolute;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color:rgb(147, 191, 218);
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    bottom: 30px;
+    left: 60px;
+}
+
+.nav:last-of-type {
+    left: 390px;
+}
+
+.nav:hover{
+    background-color:white;
+}
+
+.books:first-of-type {
+    margin-top: 25px;
 }

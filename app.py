@@ -263,14 +263,20 @@ def voice_search():
     transcripts = Recognize('user_audio.wav')
 
     search.create_index(Book)
-    results = Book.query.msearch(transcripts).all()
+    # results = Book.query.msearch(transcripts).all()
 
-    books = []
-    for result in results:
-        book_dict = {'id': result.id, 'title': result.title, 'cover': result.cover, 'author': result.author}
-        books.append(book_dict)
+    book = Book.query.msearch(transcripts).first()
+
+    # books = []
+    # for result in results:
+    #     book_dict = {'id': result.id, 'title': result.title, 'cover': result.cover, 'author': result.author}
+    #     books.append(book_dict)
     
-    return jsonify({'Books': books})
+    # return jsonify({'Books': books})
+
+    book_dict = {'id': book.id, 'title': book.title, 'cover': book.cover, 'author': book.author}
+    return jsonify(book_dict)
+
 
 # Zeina's Routes
 @app.route('/')
@@ -296,6 +302,19 @@ def ui_books():
         db.session.commit()
         
     return render_template('books.html', books=books)
+
+
+@app.route('/validate', methods=['POST'])
+def validate():
+    username = request.form['username']
+    password = request.form['password']
+    user = User.query.filter_by(username=username).first()
+    if user:
+        return redirect(url_for('ui_books'))
+        if check_password_hash(user.password, password):
+            return redirect(url_for('ui_books'))
+    
+    return redirect(url_for('ui_login'))
 
 
 @app.route('/books/<int:book_id>/', methods=['GET', 'POST'])
@@ -324,7 +343,8 @@ def ui_delete(book_id):
 
 @app.route('/requests/')
 def ui_requests():
-    all_requests = Request.query.filter_by(status='Waiting').all()
+    page = request.args.get('page', 1, type=int)
+    all_requests = Request.query.filter_by(status='Waiting').paginate(per_page=3, page=page, error_out=False)
     return render_template('requests.html', requests=all_requests)
 
 
