@@ -144,9 +144,9 @@ def users():
         return jsonify({'Users': users})
 
 
-@app.route('/api/users/<string:user_name>/', methods=['GET', 'PUT', 'DELETE'])
-def user(user_name):
-    user = User.query.filter_by(username=user_name)
+@app.route('/api/users/<int:user_id>/', methods=['GET', 'PUT', 'DELETE'])
+def user(user_id):
+    user = User.query.filter_by(username=user_id)
 
     if request.method == 'GET':
         user = user.first()
