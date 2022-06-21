@@ -310,7 +310,6 @@ def validate():
     password = request.form['password']
     user = User.query.filter_by(username=username).first()
     if user:
-        return redirect(url_for('ui_books'))
         if check_password_hash(user.password, password):
             return redirect(url_for('ui_books'))
     
